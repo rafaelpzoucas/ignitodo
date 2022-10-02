@@ -42,7 +42,7 @@ export function NewTaksForm() {
                 disabled={newTaskDescription.length === 0}
             >
                 <Plus size={18} weight="bold" />
-                <span className='hidden sm:static'>
+                <span className='hidden sm:inline'>
                     Criar
                 </span>
             </button>

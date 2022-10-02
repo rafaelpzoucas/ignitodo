@@ -4,7 +4,7 @@ import { useTasks } from "../contexts/TasksContext/useTasks"
 import { Task } from "./Task"
 
 export function Tasks() {
-    const { tasks, setTasks } = useTasks()
+    const { tasks, setTasks, totalOfCompletedTasks } = useTasks()
 
     function deleteTask(taskToDelete: string) {
         const taskWithoutDeletedOne = tasks.filter(task => {
@@ -13,6 +13,9 @@ export function Tasks() {
 
         setTasks(taskWithoutDeletedOne)
     }
+
+    console.log(totalOfCompletedTasks)
+    
 
     return (
         <section className="flex flex-col gap-2 pb-8">
@@ -27,7 +30,7 @@ export function Tasks() {
                 <div className="flex flex-row items-center gap-2 sm:gap-4">
                     <strong className="text-violet-600 text-sm">Concluídas</strong>
                     <span className="px-[8px] py-[2px] rounded-full bg-zinc-700 text-zinc-50 text-xs">
-                        0 de {tasks.length}
+                        {totalOfCompletedTasks} de {tasks.length}
                     </span>
                 </div>
             </header>
