@@ -17,11 +17,8 @@ export function Task({ id, description, onDeleteTask, checked }: TaskProps) {
 
     function handleCheckedChange() {
         setIsChecked(!isChecked)
-    }
-    
-    useEffect(() => {
         countCompletedTasks()        
-    }, [isChecked])
+    }
 
     return (
         <label 

@@ -14,9 +14,6 @@ export function Tasks() {
         setTasks(taskWithoutDeletedOne)
     }
 
-    console.log(totalOfCompletedTasks)
-    
-
     return (
         <section className="flex flex-col gap-2 pb-8">
             <header className="flex flex-row items-center justify-between border-b py-4 border-b-zinc-700">
