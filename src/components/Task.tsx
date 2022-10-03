@@ -2,7 +2,6 @@ import { Check, Trash, TrashSimple } from 'phosphor-react'
 import { InputHTMLAttributes, useEffect, useState } from 'react'
 
 import * as Checkbox from '@radix-ui/react-checkbox';
-import { useTasks } from '../contexts/TasksContext/useTasks';
 
 interface TaskProps extends InputHTMLAttributes<HTMLInputElement> {
     id: string
@@ -12,12 +11,10 @@ interface TaskProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export function Task({ id, description, onDeleteTask, checked }: TaskProps) {
-    const { countCompletedTasks } = useTasks()
     const [isChecked, setIsChecked] = useState(checked)
 
     function handleCheckedChange() {
-        setIsChecked(!isChecked)
-        countCompletedTasks()        
+        setIsChecked(!isChecked)    
     }
 
     return (

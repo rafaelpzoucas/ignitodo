@@ -4,7 +4,13 @@ import { useTasks } from "../contexts/TasksContext/useTasks"
 import { Task } from "./Task"
 
 export function Tasks() {
-    const { tasks, setTasks, totalOfCompletedTasks } = useTasks()
+    const { tasks, setTasks } = useTasks()
+    const [isChecked, setIsChecked] = useState(false)
+
+    const totalOfCompletedTasks = tasks.reduce((counter, obj) => {
+        if (obj.isCompleted === true) counter += 1
+        return counter;
+    }, 0);
 
     function deleteTask(taskToDelete: string) {
         const taskWithoutDeletedOne = tasks.filter(task => {
@@ -13,6 +19,8 @@ export function Tasks() {
 
         setTasks(taskWithoutDeletedOne)
     }
+
+    console.log(totalOfCompletedTasks);
 
     return (
         <section className="flex flex-col gap-2 pb-8">
