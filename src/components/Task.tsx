@@ -2,6 +2,7 @@ import { Check, Trash, TrashSimple } from 'phosphor-react'
 import { InputHTMLAttributes, useEffect, useState } from 'react'
 
 import * as Checkbox from '@radix-ui/react-checkbox';
+import { useTasks } from '../contexts/TasksContext/useTasks';
 
 interface TaskProps extends InputHTMLAttributes<HTMLInputElement> {
     id: string
@@ -11,10 +12,18 @@ interface TaskProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export function Task({ id, description, onDeleteTask, checked }: TaskProps) {
-    const [isChecked, setIsChecked] = useState(checked)
+    const { tasks, setTasks } = useTasks()
 
     function handleCheckedChange() {
-        setIsChecked(!isChecked)    
+        const taskIndex = tasks.findIndex(task => {
+            return task.id === id
+        })
+
+        const tasksUpdated = [...tasks]
+
+        tasksUpdated[taskIndex].isCompleted = !tasksUpdated[taskIndex].isCompleted
+
+        setTasks(tasksUpdated)
     }
 
     return (
@@ -22,13 +31,13 @@ export function Task({ id, description, onDeleteTask, checked }: TaskProps) {
             htmlFor={id} 
             className={`
                 flex flex-row gap-2 bg-zinc-700 p-4 rounded-lg border border-zinc-600 cursor-pointer
-                ${isChecked && 'bg-violet-900 transition-colors duration-200'}
+                ${checked && 'bg-violet-900 transition-colors duration-200'}
             `}
         >
             <Checkbox.Root 
                 id={id}
-                className={`relative w-6 h-6 rounded-full border-2 ${isChecked ? 'bg-violet-600 border-violet-600' : 'border-sky-600'}`}
-                checked={isChecked}
+                className={`relative w-6 h-6 rounded-full border-2 ${checked ? 'bg-violet-600 border-violet-600' : 'border-sky-600'}`}
+                checked={checked}
                 onCheckedChange={handleCheckedChange}
             >
                 <Checkbox.Indicator
@@ -38,7 +47,7 @@ export function Task({ id, description, onDeleteTask, checked }: TaskProps) {
                 </Checkbox.Indicator>
             </Checkbox.Root>
             <span 
-                className={`${isChecked && 'line-through'}`}
+                className={`${checked && 'line-through'}`}
             >
                 {description}
             </span>

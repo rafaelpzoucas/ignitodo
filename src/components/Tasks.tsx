@@ -5,7 +5,6 @@ import { Task } from "./Task"
 
 export function Tasks() {
     const { tasks, setTasks } = useTasks()
-    const [isChecked, setIsChecked] = useState(false)
 
     const totalOfCompletedTasks = tasks.reduce((counter, obj) => {
         if (obj.isCompleted === true) counter += 1
@@ -20,8 +19,6 @@ export function Tasks() {
         setTasks(taskWithoutDeletedOne)
     }
 
-    console.log(totalOfCompletedTasks);
-
     return (
         <section className="flex flex-col gap-2 pb-8">
             <header className="flex flex-row items-center justify-between border-b py-4 border-b-zinc-700">
@@ -35,7 +32,11 @@ export function Tasks() {
                 <div className="flex flex-row items-center gap-2 sm:gap-4">
                     <strong className="text-violet-600 text-sm">Concluídas</strong>
                     <span className="px-[8px] py-[2px] rounded-full bg-zinc-700 text-zinc-50 text-xs">
-                        {totalOfCompletedTasks} de {tasks.length}
+                        {
+                            tasks.length === 0
+                            ? 0
+                            : `${totalOfCompletedTasks} de ${tasks.length}`
+                        }
                     </span>
                 </div>
             </header>
