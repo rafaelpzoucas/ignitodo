@@ -23,14 +23,14 @@ export function Tasks() {
         <section className="flex flex-col gap-2 pb-8">
             <header className="flex flex-row items-center justify-between border-b py-4 border-b-zinc-700">
                 <div className="flex flex-row items-center gap-2 sm:gap-4">
-                    <strong className="text-sky-600 text-sm">Tarefas criadas</strong>
+                    <strong className="text-sky-600 text-sm">Created tasks</strong>
                     <span className="px-[8px] py-[2px] rounded-full bg-zinc-700 text-zinc-50 text-xs">
                         {tasks.length}
                     </span>
                 </div>
                 
                 <div className="flex flex-row items-center gap-2 sm:gap-4">
-                    <strong className="text-violet-600 text-sm">Concluídas</strong>
+                    <strong className="text-violet-600 text-sm">Done</strong>
                     <span className="px-[8px] py-[2px] rounded-full bg-zinc-700 text-zinc-50 text-xs">
                         {
                             tasks.length === 0
@@ -57,8 +57,8 @@ export function Tasks() {
                 ) : (
                     <div className="flex flex-col items-center justify-center py-16 text-zinc-500">
                         <img src="clipboard.svg" alt="Clipboard icon" />
-                        <strong className="mt-4">Você ainda não tem tarefas cadastradas</strong>
-                        <span>Crie tarefas e organize seus itens a fazer</span>
+                        <strong className="mt-4">You don't have any tasks yet</strong>
+                        <span>Create tasks and organize your to-dos</span>
                     </div>
                 )
             }

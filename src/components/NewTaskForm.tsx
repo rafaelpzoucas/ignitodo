@@ -30,7 +30,7 @@ export function NewTaksForm() {
         <form onSubmit={handleCreateNewTask} className="flex flex-row gap-2 -mt-7">
             <input 
                 type="text" 
-                placeholder="Adicione uma nova tarefa" 
+                placeholder="Type a new task" 
                 value={newTaskDescription}
                 onChange={handleNewTaskDescriptionChange}
                 className="w-full p-4 bg-zinc-900 border-4 border-zinc-800 rounded-lg" 
@@ -44,7 +44,7 @@ export function NewTaksForm() {
                 >
                     <Plus size={18} weight="bold" />
                     <span className='hidden sm:inline'>
-                        Criar
+                        Add
                     </span>
                 </button>
             </div>
